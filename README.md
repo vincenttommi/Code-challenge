@@ -1,5 +1,15 @@
-#Student Grade Generator (Toy Problem)
+#WEEK 1 CODE CHALLENGE
 
- a javascrip program that prompts the user to input student marks. The input should be between 0 and 100. Then output the correct grade: 
-#function to calculate speed 
-#a program that takes as input the speed of a car e.g 80. If the speed is less than 70, it should print “Ok”. Otherwise, for every 5 km/s above the speed limit (70), it should give the driver one demerit point and print the total number of demerit points.
+#Descriptiopn This reposite contains three files : Qn1.js, Qn2.js & Qn3.js all of which are solutions to the challenge.
+#The first function is a javascript  that tries to calcutae marks of the user  according to specified 
+#assigment of marks
+#The second function calculates  points of the user by using the speed and notifies 
+#the user if is among defined range to avoid overspeeding
+
+
+
+
+
+
+
+#Author vincent tommi kori an upcoming software Engineer exploring the world of code.
