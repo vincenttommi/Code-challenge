@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>taxes</title>
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+
+</head>
+<body>
+
+<div class="row col-md-9">
+
+<div class="container col-md-6">
+
+	<h4>Step 1. Gross Income = Basic salary + allowances + commissions</h4> 
+	<h4>Step 2. Taxable Income = Gross Income - all deductions/exemptions allowed by law e.g. NSSF</h4>
+
+	<form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Basic salary</label>
+      <input type="number" class="form-control" id="inputEmail4" placeholder="Basic">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">NHIF</label>
+      <input type="number" class="form-control" id="inputPassword4" placeholder="NHIF">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">NSSF</label>
+    <input type="number" class="form-control" id="inputAddress" placeholder="NSSF">
+  </div>
+  <div class="form-group">
+    <label for="inputAddress2">KRA </label>
+    <input type="number" class="form-control" id="inputAddress2" placeholder="KRA">
+  </div>
+
+   <div class="form-group">
+    <label for="inputAddress2">Allowances/Commission </label>
+   
+	<!-- // this code is used to make the web page interactive by allowing the  -->
+    <!-- //user to enter data into an input field and see the results of some calculation or  -->
+    <!-- //processing based on that input in real-time, without having to manually refresh the page. -->
+        
+	<input type="number" class="form-control" id="inputAddress22" onkeyup="calculateBasic()" placeholder="Allowances">
+  </div>
+  
+    <div class="form-group">
+    <label for="inputAddress2">Gross Salary </label>
+    <input type="number" class="form-control" id="inputAddress24" placeholder="Gross" readonly>
+  </div>
+
+   <div class="form-group">
+    <label for="inputAddress2">PAYEE </label>
+    <input type="number" class="form-control" id="payee" placeholder="Payee" readonly>
+  </div>
+  
+
+  <button type="button" class="btn btn-primary" onclick="calculateAll()">Calculate</button>
+</form>
+</div>
+
+<div class="container col-md-3">
+	</div>
+
+
+</div>
+</body>
+</html>
+
+<script type="text/javascript">
+	
+	function calculateBasic(){
+
+			const basic=_el("inputEmail4");
+            // defined a variable basic and initailised it with a get element method that captures inout of Ema
+			if(basic==""){
+	        //an if statement that helps me to check if the basic variable is empty 
+             //when user enters data when its empty it pops an alerts message
+			alert("First enter Basic income");
+				return;
+			}
+
+			const allow=_el("inputAddress22");
+			// defined a variable allow and initailised it with a get element method that captures inputAddres22
+			const totalGross=+basic + +allow;
+			//declared a variable  totalthat we have assigned it with another 
+
+			setValues("inputAddress24",totalGross);
+	         // In summary, this line of code is setting the value of an input 
+            //element with the ID inputAddress24 to the value of the totalGross variable or expression
+
+
+
+
+
+
+	}
+
+
+function calculateAll(){
+
+        //function that caculates all the   values of   various inputs fields in our form
+		const gross=_el("inputAddress24");
+        ///declared  variable gross initialised with  dom method that cap 
+         
+		const nhif=_el("inputPassword4");
+		const kra=_el("inputAddress2");
+		const nssf=_el("inputAddress");
+
+
+		if(gross=="" || kra=="" || nssf=="" || nhif==""){
+
+        //an if statement that checks if the inputs fields ara empty when the user clicks them then
+        //pops an alert message if it empty else returns the values   
+
+			alert("Please fill out required fields others are set automatically");
+			return;
+		}
+
+		const deductions= +nhif + +kra + +nssf;
+		//a   variable declared deductions that addd values being passed to nhif ,kra and nssf values variables
+
+		const payee=gross - deductions;
+        // a variable assiged payee that - initailed by  variables that holds value of grossand using
+        // an arimthemitic operator to substract gross-deductions
+
+		setValues("payee",payee);
+
+// The purpose of this function could be to set the value of an
+// input field or an object property named "payee" to the value of the payee variabl
+
+	}
+
+function _el(d){
+
+		return document.getElementById(d).value;
+
+	}
+function setValues(b,c){
+
+		document.getElementById(b).value=c;
+
+	}
+</script>
